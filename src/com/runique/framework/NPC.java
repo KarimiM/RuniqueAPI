@@ -46,19 +46,38 @@ public class NPC {
 	 * @param npc The npc.
 	 */
 	public void setNpc(Npc npc) {
+		if (npc == null) {
+			return;
+		}
 		this.npc = npc;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	/**
 	 * Attacks the npc.
 	 */
 	public void attack() {
 		Npc[] n = Npcs.getNearest(npcFilter);
-		if (n.length > 0) {
-			n[0].interact(1);
+		if (n.length == 0) {
+			System.out.print("No npc to attack");
+			return;
 		}
+		n[0].interact(1);
  	}
+	
+	/**
+	 * Transforms the npc.
+	 * @param id The id to transform it into.
+	 */
+	public void transformNpc(int id) {
+		Filter<Npc> filter = new Filter<Npc>() {
+			@Override
+			public boolean accept(Npc n) {
+				return n != null && n.getDef().getId() == id && !n.isInCombat() && n.getInteractingCharacter() == null;
+			}
+		};
+		setNpc(Npcs.getNearest(filter)[0]);
+	}
 	
 	/**
 	 * The filter for the npc.
