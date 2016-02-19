@@ -50,13 +50,6 @@ public enum Potion {
 	 * @return True if so.
 	 */
 	public boolean hasPotion() {
-		for (Item i : Inventory.getItems()) {
-			for (int id : ids) {
-				if (i.getId() == id) {
-					return true;
-				}
-			}
-		}
-		return false;
+		return RuniqueInventory.containsAny(getIds());
 	}
 }

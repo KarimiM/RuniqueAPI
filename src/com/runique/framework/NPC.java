@@ -59,7 +59,7 @@ public class NPC {
 	public void attack() {
 		Npc[] n = Npcs.getNearest(npcFilter);
 		if (n.length == 0) {
-			System.out.print("No npc to attack");
+			System.out.println("No npc to attack");
 			return;
 		}
 		n[0].interact(1);

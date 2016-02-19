@@ -17,7 +17,7 @@ public class RuniqueInventory {
 	 * @param id The id.
 	 * @return True if so.
 	 */
-	public boolean contains(int id) {
+	public static boolean contains(int id) {
 		return Inventory.getItem(id) != null;
 	}
 	
@@ -26,7 +26,7 @@ public class RuniqueInventory {
 	 * @param ids The ids.
 	 * @return True if so.
 	 */
-	public boolean containsAny(int...ids) {
+	public static boolean containsAny(int...ids) {
 		for (int id : ids) {
 			return contains(id);
 		}
@@ -38,7 +38,7 @@ public class RuniqueInventory {
 	 * @param ids The ids
 	 * @return True if so.
 	 */
-	public boolean containsAll(int...ids) {
+	public static boolean containsAll(int...ids) {
 		for (int id : ids) {
 			if (!contains(id)) {
 				return false;
@@ -52,7 +52,7 @@ public class RuniqueInventory {
 	 * @param id The id.
 	 * @return True if so.
 	 */
-	public int getCount(int id) {
+	public static int getCount(int id) {
 		int count = 0;
 		for (Item i : Inventory.getItems()) {
 			if (i.getId() == id) {
